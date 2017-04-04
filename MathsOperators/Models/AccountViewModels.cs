@@ -8,11 +8,12 @@ namespace MathsOperators.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Email/UserName")]
+        public string EmailOrUserName { get; set; }
 
-        [Display(Name = "Hometown")]
-        public string Hometown { get; set; }
+        [Required]
+        [Display(Name = "Date of brith")]
+        public string DateOfBirth { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -47,16 +48,15 @@ namespace MathsOperators.Models
     public class ForgotViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Email/UserName")]
+        public string EmailOrUserName { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Email/UserName")]
+        public string EmailOrUserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -70,9 +70,8 @@ namespace MathsOperators.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Email/UserName")]
+        public string EmailOrUserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -85,16 +84,25 @@ namespace MathsOperators.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Hometown")]
-        public string Hometown { get; set; }
+
+        [Display(Name = "Grade/Class")]
+        public string Grade { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [RegularExpression("yyyy/mmm/dd",ErrorMessage ="Enter date of birth as year/month/day:yyyy/mmm/dd")]
+        [Display(Name = "Date of birth")]
+        public DateTime DateOfBirth { get; set; }
+
+        [Display(Name ="Name of your school")]
+        public string School { get; set; }
     }
 
     public class ResetPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Email/UserName")]
+        public string EmailOrUserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -113,8 +121,12 @@ namespace MathsOperators.Models
     public class ForgotPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Email/UserName")]
+        public string EmailOrUserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name ="Date of birth")]
+        public DateTime DateOfBirth { get; set; }
     }
 }
